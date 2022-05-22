@@ -14,7 +14,7 @@ import urllib.request
 import shutil
 import matplotlib as mpl
 
-mpl.use('TkAgg')
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 # Root directory of the project
