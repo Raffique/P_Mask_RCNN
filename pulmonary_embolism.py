@@ -67,10 +67,10 @@ class PulmonaryConfig(Config):
     TRAIN_ROIS_PER_IMAGE = 64
 
     # Use a small epoch since the data is simple
-    STEPS_PER_EPOCH = 2000
+    STEPS_PER_EPOCH = 32 #2000
 
     # use small validation steps since the epoch is small
-    VALIDATION_STEPS = 20
+    VALIDATION_STEPS = 10 #20
 
     MEAN_PIXEL = np.array([54.18, 54.18, 54.18])
 
