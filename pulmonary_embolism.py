@@ -370,6 +370,9 @@ if __name__ == "__main__":
                     layers='heads',
                     augmentation=augmentation)
         print("finish")
+        
+        model.save("train-heads.h5")
+        model.save_weights("train-heads-weights.h5")
 
         # Training - Stage 2
         # Finetune layers from ResNet stage 4 and up
@@ -379,6 +382,9 @@ if __name__ == "__main__":
                     epochs=40,
                     layers='4+',
                     augmentation=augmentation)
+        
+        model.save("train-4plus.h5")
+        model.save_weights("train-4plus-weights.h5")
 
         print("Fine tune all layers")
         model.train(train_pulmonary, val_pulmonary,
@@ -386,6 +392,10 @@ if __name__ == "__main__":
                     epochs=80,
                     layers='all',
                     augmentation=augmentation)
+        
+        model.save("train-all.h5")
+        model.save_weights("train-all-weights.h5")
+        
     elif args.command == "inference":
         class InferenceConfig(PulmonaryConfig):
             GPU_COUNT = 1
