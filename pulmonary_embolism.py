@@ -356,6 +356,7 @@ if __name__ == "__main__":
         #                             "mrcnn_bbox", "mrcnn_mask"])
         # print("finish")
         
+        MODEL_PATH = ""
         if args.model.lower() == "last":
             # Find last trained weights
             MODEL_PATH = model.find_last()
@@ -365,7 +366,7 @@ if __name__ == "__main__":
         #MODEL_PATH = args.model
         print("Loading weights from ", MODEL_PATH)
 
-        model.load_weights(COCO_MODEL_PATH, by_name=True,
+        model.load_weights(MODEL_PATH, by_name=True,
                            exclude=["mrcnn_class_logits", "mrcnn_bbox_fc",
                                     "mrcnn_bbox", "mrcnn_mask"])
         print("finish")
