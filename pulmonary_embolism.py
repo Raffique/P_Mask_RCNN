@@ -370,7 +370,8 @@ if __name__ == "__main__":
                            exclude=["mrcnn_class_logits", "mrcnn_bbox_fc",
                                     "mrcnn_bbox", "mrcnn_mask"])
         print("finish")
-
+        
+        """
         print("Training network heads")
         model.train(train_pulmonary, val_pulmonary,
                     learning_rate=config.LEARNING_RATE,
@@ -378,9 +379,8 @@ if __name__ == "__main__":
                     layers='heads',
                     augmentation=augmentation)
         print("finish")
+        """
         
-        model.save("train-heads.h5")
-        model.save_weights("train-heads-weights.h5")
 
         # Training - Stage 2
         # Finetune layers from ResNet stage 4 and up
@@ -391,18 +391,15 @@ if __name__ == "__main__":
                     layers='4+',
                     augmentation=augmentation)
         
-        model.save("train-4plus.h5")
-        model.save_weights("train-4plus-weights.h5")
-
+        """
         print("Fine tune all layers")
         model.train(train_pulmonary, val_pulmonary,
                     learning_rate=config.LEARNING_RATE / 10,
                     epochs=80,
                     layers='all',
                     augmentation=augmentation)
-        
-        model.save("train-all.h5")
-        model.save_weights("train-all-weights.h5")
+        """
+
         
     elif args.command == "inference":
         class InferenceConfig(PulmonaryConfig):
