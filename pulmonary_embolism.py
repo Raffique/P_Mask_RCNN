@@ -384,21 +384,23 @@ if __name__ == "__main__":
 
         # Training - Stage 2
         # Finetune layers from ResNet stage 4 and up
+        """
         print("Fine tune Resnet stage 4 and up")
         model.train(train_pulmonary, val_pulmonary,
                     learning_rate=config.LEARNING_RATE,
                     epochs=40,
                     layers='4+',
                     augmentation=augmentation)
-        
         """
+        
+        
         print("Fine tune all layers")
         model.train(train_pulmonary, val_pulmonary,
                     learning_rate=config.LEARNING_RATE / 10,
                     epochs=80,
                     layers='all',
                     augmentation=augmentation)
-        """
+        
 
         
     elif args.command == "inference":
